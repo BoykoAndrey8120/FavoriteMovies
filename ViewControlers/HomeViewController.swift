@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        homeView.moviesTableView.reloadData()
+       
     }
     
     //MARK: - Action
@@ -31,9 +31,18 @@ class HomeViewController: UIViewController {
             title: homeView.textFieldTitle.text ?? "",
             year: Int(homeView.textFeildYear.text ?? "0") ?? 0)
         let year = Int(homeView.textFeildYear.text ?? "0") ?? 0
-        if homeView.textFieldTitle.hasText && (year > 1900 && year < 2030)  {
-            movies.append(modelMovie)
-            homeView.moviesTableView.reloadData()
+        //var textMovie = homeView.textFieldTitle.text
+        var duplicate = false
+        movies.forEach({
+            if $0.title.trimmingCharacters(in: .whitespaces) == homeView.textFieldTitle.text?.trimmingCharacters(in: .whitespaces) && $0.year == year {
+            duplicate = true
+            }
+        })
+        if homeView.textFieldTitle.hasText && (year > 1900 && year < 2030) && duplicate == false {
+            movies.insert(modelMovie, at: 0)
+            let indexPath = IndexPath(row: 0, section: 0)
+            homeView.moviesTableView.insertRows(at: [indexPath], with: .bottom)
+            duplicate = false
         }
     }
 }
@@ -52,3 +61,5 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return cell ?? UITableViewCell()
     }
 }
+
+

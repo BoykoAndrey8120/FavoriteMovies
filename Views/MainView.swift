@@ -28,7 +28,7 @@ class MainView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: SetupConstraints
+    //MARK: - SetupConstraints
     
     func setupTextFieldTitle() {
         textFieldTitle.borderStyle = .roundedRect
@@ -67,7 +67,6 @@ class MainView: UIView {
     }
     
     func setupMoviesTableView() {
-        //        moviesTableView.backgroundColor = .orange
         moviesTableView.translatesAutoresizingMaskIntoConstraints = false
         let topConstraint = moviesTableView.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: 20)
         let leadingConstraint = moviesTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10)
