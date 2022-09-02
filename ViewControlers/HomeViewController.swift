@@ -31,7 +31,6 @@ class HomeViewController: UIViewController {
             title: homeView.textFieldTitle.text ?? "",
             year: Int(homeView.textFeildYear.text ?? "0") ?? 0)
         let year = Int(homeView.textFeildYear.text ?? "0") ?? 0
-        //var textMovie = homeView.textFieldTitle.text
         var duplicate = false
         movies.forEach({
             if $0.title.trimmingCharacters(in: .whitespaces) == homeView.textFieldTitle.text?.trimmingCharacters(in: .whitespaces) && $0.year == year {
